@@ -74,14 +74,14 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
-            className="relative hidden lg:block"
+            className="relative flex justify-center lg:block"
           >
             <div className="relative floating-animation">
               <div className="absolute inset-0 bg-gradient-to-r from-primary/30 to-accent/30 rounded-3xl blur-2xl" />
               <img
                 src={profileImage}
                 alt="Fedelika Maxmus - AI/ML Engineer"
-                className="relative w-full max-w-md mx-auto rounded-3xl shadow-2xl object-cover aspect-[3/4]"
+                className="relative w-64 h-80 md:w-80 md:h-96 lg:w-full lg:max-w-md mx-auto rounded-3xl shadow-2xl object-cover"
               />
             </div>
           </motion.div>
