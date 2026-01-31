@@ -14,23 +14,52 @@ interface Project {
 const projects: Project[] = [
   {
     title: "Tanzania Data Bot",
-    description: "An AI-powered chatbot that provides interactive insights from the 2022 Tanzania Population & Housing Census, helping users explore national statistics through natural language.",
+    description: "I built an AI-powered chatbot that provides interactive insights from the 2022 Tanzania Population & Housing Census, helping users explore national statistics through natural language.",
     technologies: ["AI", "NLP", "Python", "Data Analysis"],
-    githubUrl: "#",
+    githubUrl: "https://github.com/CHRISBWESA/tanzania-data-bot",
     featured: true,
   },
   {
-    title: "Smart Agriculture IoT",
-    description: "IoT-based monitoring system for agricultural fields, providing real-time data on soil conditions and weather patterns to optimize farming decisions.",
-    technologies: ["IoT", "Python", "Machine Learning", "API"],
-    githubUrl: "#",
+    title: "Chest X-Ray Lung Disease Classification",
+    description: "I developed a deep learning model to classify lung diseases from chest X-ray images, helping in early detection and diagnosis.",
+    technologies: ["Deep Learning", "Computer Vision", "Python", "Medical AI"],
+    githubUrl: "https://github.com/femyfede/Chest-X-Ray-Lung-Disease-Classification",
   },
   {
-    title: "Health Data Analytics",
-    description: "Data analytics platform for visualizing and analyzing health trends across Tanzanian regions to support policy decisions.",
-    technologies: ["Data Science", "Visualization", "Python"],
-    githubUrl: "#",
-    liveUrl: "#",
+    title: "Crop Health Hub",
+    description: "I created an AI-powered platform for monitoring and predicting crop health, helping farmers make data-driven decisions.",
+    technologies: ["Machine Learning", "Agriculture", "Python", "IoT"],
+    githubUrl: "https://github.com/femyfede/crop-health-hub",
+  },
+  {
+    title: "GAN Generator",
+    description: "I implemented Generative Adversarial Networks to create synthetic data and images for various AI applications.",
+    technologies: ["GANs", "Deep Learning", "Python", "TensorFlow"],
+    githubUrl: "https://github.com/femyfede/GAN-generator",
+  },
+  {
+    title: "Smart Door",
+    description: "I developed an IoT-based smart door system with facial recognition for enhanced security and access control.",
+    technologies: ["IoT", "Computer Vision", "Python", "Raspberry Pi"],
+    githubUrl: "https://github.com/femyfede/smartDoor",
+  },
+  {
+    title: "Caring Companion",
+    description: "I built an AI chatbot companion designed to provide emotional support and mental health assistance.",
+    technologies: ["NLP", "AI", "Python", "Chatbot"],
+    githubUrl: "https://github.com/femyfede/caring-companion",
+  },
+  {
+    title: "Diabetes Prediction",
+    description: "I created a machine learning model to predict diabetes risk based on health indicators and patient data.",
+    technologies: ["Machine Learning", "Healthcare", "Python", "Data Science"],
+    githubUrl: "https://github.com/femyfede/diabetes",
+  },
+  {
+    title: "Bot RAG",
+    description: "I developed a Retrieval-Augmented Generation bot that combines document retrieval with AI for intelligent responses.",
+    technologies: ["RAG", "LLM", "Python", "NLP"],
+    githubUrl: "https://github.com/femyfede/bot_rag",
   },
 ];
 
@@ -49,7 +78,7 @@ const Projects = () => {
             Featured <span className="gradient-text">Projects</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Building intelligent solutions that make a difference
+            Here are some of the AI and data science projects I've developed
           </p>
           <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full mt-4" />
         </motion.div>

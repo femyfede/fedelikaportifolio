@@ -27,10 +27,10 @@ const About = () => {
             className="card-elevated rounded-2xl p-8 md:p-10 border border-border"
           >
             <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-              <span className="text-foreground font-semibold">Fedelika Maxmus</span> (also known as <span className="text-foreground font-semibold">Fedelika Ng'olo</span>) is a Tanzanian AI/ML Engineer and Data Scientist recognized for leveraging technology to solve real-world and social challenges. She specializes in Artificial Intelligence, Machine Learning, IoT, and data-driven systems.
+              I'm <span className="text-foreground font-semibold">Fedelika Maxmus</span> (also known as <span className="text-foreground font-semibold">Fedelika Ng'olo</span>), a Tanzanian AI/ML Engineer and Data Scientist. I leverage technology to solve real-world and social challenges, specializing in Artificial Intelligence, Machine Learning, IoT, and data-driven systems.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              She is currently a Data Science student at <span className="text-foreground font-semibold">Mbeya University of Science and Technology (MUST)</span> and an active member of the <span className="text-primary font-semibold">Tanzania AI Community</span>, where she contributes to initiatives that promote AI and data science education across the region.
+              I'm currently a Data Science student at <span className="text-foreground font-semibold">Mbeya University of Science and Technology (MUST)</span> and an active member of the <span className="text-primary font-semibold">Tanzania AI Community</span>, where I contribute to initiatives that promote AI and data science education across the region.
             </p>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-10 pt-8 border-t border-border">

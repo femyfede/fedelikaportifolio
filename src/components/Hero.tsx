@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
-import heroImage from "@/assets/hero-abstract.png";
+import profileImage from "@/assets/fede.jpg";
 
 const Hero = () => {
   return (
@@ -48,7 +48,7 @@ const Hero = () => {
               transition={{ delay: 0.4, duration: 0.6 }}
               className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl mx-auto lg:mx-0"
             >
-              I'm <span className="text-foreground font-semibold">Fedelika Maxmus</span> — an AI/ML Engineer and Data Scientist building intelligent, data-driven solutions that empower communities.
+              Hi, I'm <span className="text-foreground font-semibold">Fedelika Maxmus</span> — an AI/ML Engineer and Data Scientist. I build intelligent, data-driven solutions that empower communities and solve real-world challenges.
             </motion.p>
 
             <motion.div
@@ -69,7 +69,7 @@ const Hero = () => {
             </motion.div>
           </motion.div>
 
-          {/* Hero image */}
+          {/* Profile image */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -79,9 +79,9 @@ const Hero = () => {
             <div className="relative floating-animation">
               <div className="absolute inset-0 bg-gradient-to-r from-primary/30 to-accent/30 rounded-3xl blur-2xl" />
               <img
-                src={heroImage}
-                alt="AI and Data Science illustration"
-                className="relative w-full max-w-lg mx-auto rounded-3xl shadow-2xl"
+                src={profileImage}
+                alt="Fedelika Maxmus - AI/ML Engineer"
+                className="relative w-full max-w-md mx-auto rounded-3xl shadow-2xl object-cover aspect-[3/4]"
               />
             </div>
           </motion.div>
