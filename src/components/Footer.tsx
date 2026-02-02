@@ -27,7 +27,7 @@ const Footer = () => {
               <Github className="w-4 h-4" />
             </a>
             <a
-              href="https://linkedin.com/in/fedelika-ngolo"
+              href="https://www.linkedin.com/in/fedelika-maxmus/"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-lg bg-secondary border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/50 transition-all duration-300"
@@ -36,7 +36,7 @@ const Footer = () => {
               <Linkedin className="w-4 h-4" />
             </a>
             <a
-              href="mailto:fedelikangolo@gmail.com"
+              href="mailto:femyfede@gmail.com"
               className="w-10 h-10 rounded-lg bg-secondary border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/50 transition-all duration-300"
               aria-label="Email"
             >
