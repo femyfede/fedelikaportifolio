@@ -48,7 +48,7 @@ const Contact = () => {
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
                 <Button variant="hero" size="lg" asChild>
-                  <a href="mailto:fedelikangolo@gmail.com">
+                  <a href="mailto:femyfede@gmail.com">
                     <Mail className="w-5 h-5" />
                     Send Email
                     <ArrowRight className="w-4 h-4" />
@@ -66,7 +66,7 @@ const Contact = () => {
                   <Github className="w-5 h-5" />
                 </a>
                 <a
-                  href="https://linkedin.com/in/fedelika-ngolo"
+                  href="https://www.linkedin.com/in/fedelika-maxmus/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-12 h-12 rounded-xl bg-secondary border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/50 transition-all duration-300"
@@ -74,7 +74,7 @@ const Contact = () => {
                   <Linkedin className="w-5 h-5" />
                 </a>
                 <a
-                  href="mailto:fedelikangolo@gmail.com"
+                  href="mailto:femyfede@gmail.com"
                   className="w-12 h-12 rounded-xl bg-secondary border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/50 transition-all duration-300"
                 >
                   <Mail className="w-5 h-5" />
