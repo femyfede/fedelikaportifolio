@@ -18,7 +18,7 @@ const Footer = () => {
 
           <div className="flex items-center gap-4">
             <a
-              href="https://github.com"
+              href="https://github.com/femyfede"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-lg bg-secondary border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/50 transition-all duration-300"
@@ -27,7 +27,7 @@ const Footer = () => {
               <Github className="w-4 h-4" />
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://linkedin.com/in/fedelika-ngolo"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-lg bg-secondary border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/50 transition-all duration-300"
@@ -36,7 +36,7 @@ const Footer = () => {
               <Linkedin className="w-4 h-4" />
             </a>
             <a
-              href="mailto:fedelika@example.com"
+              href="mailto:fedelikangolo@gmail.com"
               className="w-10 h-10 rounded-lg bg-secondary border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/50 transition-all duration-300"
               aria-label="Email"
             >
