@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Sparkles } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import profileImage from "@/assets/fede.jpg";
 
 const navLinks = [
   { href: "#about", label: "About" },
@@ -38,10 +39,12 @@ const Navigation = () => {
       >
         <nav className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <a href="#" className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                <Sparkles className="w-4 h-4 text-primary-foreground" />
-              </div>
+            <a href="#" className="flex items-center gap-3">
+              <img 
+                src={profileImage} 
+                alt="Fedelika Maxmus" 
+                className="w-10 h-10 rounded-full object-cover border-2 border-primary/50"
+              />
               <span className="font-display font-bold text-lg text-foreground">
                 Fedelika
               </span>
