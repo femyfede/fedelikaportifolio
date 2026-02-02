@@ -4,12 +4,19 @@ import { ArrowRight, Sparkles } from "lucide-react";
 import profileImage from "@/assets/fede.jpg";
 
 const Hero = () => {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center hero-bg overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-glow-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/15 rounded-full blur-3xl animate-glow-pulse" style={{ animationDelay: '1.5s' }} />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-glow-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/5 rounded-full blur-3xl animate-glow-pulse" style={{ animationDelay: '1.5s' }} />
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
@@ -48,7 +55,7 @@ const Hero = () => {
               transition={{ delay: 0.4, duration: 0.6 }}
               className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl mx-auto lg:mx-0"
             >
-              Hi, I'm <span className="text-foreground font-semibold">Fedelika Maxmus</span> — an AI/ML Engineer and Data Scientist. I build intelligent, data-driven solutions that empower communities and solve real-world challenges.
+              Hi, I'm <span className="text-foreground font-semibold">Maxmus Fedelika</span> — an AI/ML Engineer, Data Scientist & Web Developer. I build intelligent, data-driven solutions that empower communities and solve real-world challenges.
             </motion.p>
 
             <motion.div
@@ -57,14 +64,20 @@ const Hero = () => {
               transition={{ delay: 0.5, duration: 0.6 }}
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
-              <Button variant="hero" size="lg" asChild>
-                <a href="#projects">
-                  View My Projects
-                  <ArrowRight className="w-5 h-5" />
-                </a>
+              <Button 
+                variant="hero" 
+                size="lg" 
+                onClick={() => scrollToSection('projects')}
+              >
+                View My Projects
+                <ArrowRight className="w-5 h-5" />
               </Button>
-              <Button variant="heroOutline" size="lg" asChild>
-                <a href="#contact">Contact Me</a>
+              <Button 
+                variant="heroOutline" 
+                size="lg" 
+                onClick={() => scrollToSection('contact')}
+              >
+                Contact Me
               </Button>
             </motion.div>
           </motion.div>
@@ -77,10 +90,10 @@ const Hero = () => {
             className="relative flex justify-center lg:block"
           >
             <div className="relative floating-animation">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/30 to-accent/30 rounded-3xl blur-2xl" />
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent/10 rounded-3xl blur-2xl" />
               <img
                 src={profileImage}
-                alt="Fedelika Maxmus - AI/ML Engineer"
+                alt="Maxmus Fedelika - AI/ML Engineer"
                 className="relative w-64 h-80 md:w-80 md:h-96 lg:w-full lg:max-w-md mx-auto rounded-3xl shadow-2xl object-cover"
               />
             </div>
