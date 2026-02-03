@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
+import { useTheme } from "@/hooks/use-theme";
 import profileImage from "@/assets/fede.jpg";
 
 const navLinks = [
@@ -16,6 +17,7 @@ const navLinks = [
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,6 +63,13 @@ const Navigation = () => {
                   {link.label}
                 </a>
               ))}
+              <button
+                onClick={toggleTheme}
+                className="w-10 h-10 rounded-lg bg-secondary border border-border flex items-center justify-center text-foreground hover:border-primary/50 transition-all duration-300"
+                aria-label="Toggle theme"
+              >
+                {theme === "light" ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
+              </button>
               <Button variant="hero" size="sm" asChild>
                 <a href="#contact">Hire Me</a>
               </Button>
@@ -100,11 +109,20 @@ const Navigation = () => {
                     {link.label}
                   </a>
                 ))}
-                <Button variant="hero" size="lg" className="mt-2" asChild>
-                  <a href="#contact" onClick={() => setIsMobileMenuOpen(false)}>
-                    Hire Me
-                  </a>
-                </Button>
+                <div className="flex items-center gap-4 mt-2">
+                  <button
+                    onClick={toggleTheme}
+                    className="w-12 h-12 rounded-lg bg-secondary border border-border flex items-center justify-center text-foreground"
+                    aria-label="Toggle theme"
+                  >
+                    {theme === "light" ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
+                  </button>
+                  <Button variant="hero" size="lg" className="flex-1" asChild>
+                    <a href="#contact" onClick={() => setIsMobileMenuOpen(false)}>
+                      Hire Me
+                    </a>
+                  </Button>
+                </div>
               </div>
             </div>
           </motion.div>
