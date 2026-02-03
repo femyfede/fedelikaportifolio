@@ -35,7 +35,7 @@ const Speaking = () => {
               </div>
               <div>
                 <h3 className="font-display font-semibold text-lg mb-2 text-foreground">
-                  BLCA SMART TALK
+                  BLECA SMART TALK
                 </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   Featured speaker discussing AI innovations and their applications in solving real-world challenges in Tanzania.
