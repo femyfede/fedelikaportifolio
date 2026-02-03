@@ -55,7 +55,7 @@ const Hero = () => {
               transition={{ delay: 0.4, duration: 0.6 }}
               className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl mx-auto lg:mx-0"
             >
-              Hi, I'm <span className="text-foreground font-semibold">Maxmus Fedelika</span> — an AI/ML Engineer, Data Scientist & Web Developer. I build intelligent, data-driven solutions that empower communities and solve real-world challenges.
+              Hi, I'm <span className="text-foreground font-semibold">Maxmus Fedelika</span>, an AI/ML Engineer, Data Scientist, IoT Developer & Web Developer. I build intelligent, data-driven solutions that empower communities and solve real-world challenges.
             </motion.p>
 
             <motion.div
