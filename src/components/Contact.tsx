@@ -3,8 +3,11 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Github, Linkedin, ArrowRight, Send } from "lucide-react";
+import { Mail, Github, Linkedin, ArrowRight, Send, MessageCircle } from "lucide-react";
 import { toast } from "sonner";
+
+const WHATSAPP_NUMBER = "+255684049130";
+const EMAIL_ADDRESS = "femyfede@gmail.com";
 
 const Contact = () => {
   const [name, setName] = useState("");
@@ -25,7 +28,7 @@ const Contact = () => {
     const mailtoBody = encodeURIComponent(
       `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
     );
-    const mailtoLink = `mailto:femyfede@gmail.com?subject=${mailtoSubject}&body=${mailtoBody}`;
+    const mailtoLink = `mailto:${EMAIL_ADDRESS}?subject=${mailtoSubject}&body=${mailtoBody}`;
     
     // Open email client
     window.location.href = mailtoLink;
@@ -140,10 +143,18 @@ const Contact = () => {
                   <Linkedin className="w-5 h-5" />
                 </a>
                 <a
-                  href="mailto:femyfede@gmail.com"
+                  href={`mailto:${EMAIL_ADDRESS}`}
                   className="w-12 h-12 rounded-xl bg-secondary border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/50 transition-all duration-300"
                 >
                   <Mail className="w-5 h-5" />
+                </a>
+                <a
+                  href={`https://wa.me/${WHATSAPP_NUMBER.replace('+', '')}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 rounded-xl bg-[#25D366]/10 border border-[#25D366]/30 flex items-center justify-center text-[#25D366] hover:bg-[#25D366]/20 hover:border-[#25D366]/50 transition-all duration-300"
+                >
+                  <MessageCircle className="w-5 h-5" />
                 </a>
               </div>
             </div>
