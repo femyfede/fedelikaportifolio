@@ -59,7 +59,7 @@ const About = () => {
                 <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-3">
                   <GraduationCap className="w-6 h-6 text-primary" />
                 </div>
-                <span className="text-sm text-muted-foreground">Data Scientist</span>
+                <span className="text-sm text-muted-foreground">Data Analyst</span>
               </div>
               <div className="flex flex-col items-center text-center">
                 <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-3">
