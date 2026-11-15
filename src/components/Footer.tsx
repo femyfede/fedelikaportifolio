@@ -1,59 +1,10 @@
-import { Github, Linkedin, Mail, Heart } from "lucide-react";
-
-const Footer = () => {
-  const currentYear = new Date().getFullYear();
-
-  return (
-    <footer className="py-12 border-t border-border">
-      <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="text-center md:text-left">
-            <h3 className="font-display font-bold text-lg text-foreground mb-1">
-              Fedelika Maxmus
-            </h3>
-            <p className="text-sm text-muted-foreground">
-              Building intelligent solutions for a better future.
-            </p>
-          </div>
-
-          <div className="flex items-center gap-4">
-            <a
-              href="https://github.com/femyfede"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-10 h-10 rounded-lg bg-secondary border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/50 transition-all duration-300"
-              aria-label="GitHub"
-            >
-              <Github className="w-4 h-4" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/fedelika-maxmus/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-10 h-10 rounded-lg bg-secondary border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/50 transition-all duration-300"
-              aria-label="LinkedIn"
-            >
-              <Linkedin className="w-4 h-4" />
-            </a>
-            <a
-              href="mailto:femyfede@gmail.com"
-              className="w-10 h-10 rounded-lg bg-secondary border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/50 transition-all duration-300"
-              aria-label="Email"
-            >
-              <Mail className="w-4 h-4" />
-            </a>
-          </div>
-        </div>
-
-        <div className="mt-8 pt-6 border-t border-border text-center">
-          <p className="text-sm text-muted-foreground flex items-center justify-center gap-1">
-            © {currentYear} Fedelika Maxmus. Made with{" "}
-            <Heart className="w-4 h-4 text-primary fill-primary" /> in Tanzania
-          </p>
-        </div>
-      </div>
-    </footer>
-  );
-};
-
-export default Footer;
+import { ArrowUp, Github, Linkedin, Mail } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { profile } from "@/data/profile";
+export default function Footer() {
+  return <footer className="border-t border-border py-9"><div className="page-container">
+    <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-center"><div><p className="font-display text-lg font-medium">{profile.name}</p><p className="mt-1 text-xs text-muted-foreground">Building intelligent solutions for a better future.</p></div>
+      <div className="flex items-center gap-2">{[{ url: profile.github, label: "GitHub", icon: Github }, { url: profile.linkedin, label: "LinkedIn", icon: Linkedin }, { url: `mailto:${profile.email}`, label: "Email", icon: Mail }].map(link => <Button asChild key={link.label} variant="ghost" size="icon"><a href={link.url} target={link.label === "Email" ? undefined : "_blank"} rel="noopener noreferrer" aria-label={link.label} title={link.label}><link.icon /></a></Button>)}<Button asChild variant="outline" size="icon"><a href="#home" aria-label="Back to top" title="Back to top"><ArrowUp /></a></Button></div>
+    </div><div className="mt-6 flex flex-wrap justify-between gap-3 border-t border-border pt-5 text-xs text-muted-foreground"><p>© {new Date().getFullYear()} {profile.name}</p><p>Based in Tanzania. Open to collaboration.</p></div>
+  </div></footer>;
+}

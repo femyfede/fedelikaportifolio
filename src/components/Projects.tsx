@@ -1,156 +1,51 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { ArrowUpRight, Github, Sprout, AudioLines, ChartNoAxesCombined, HeartPulse, Languages } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Github, ExternalLink, Bot, Sparkles } from "lucide-react";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import SectionHeading from "./SectionHeading";
+import { featuredProjects, type CaseStudy } from "@/data/projects";
 
-interface Project {
-  title: string;
-  description: string;
-  technologies: string[];
-  githubUrl?: string;
-  liveUrl?: string;
-  featured?: boolean;
-}
-
-const projects: Project[] = [
-  {
-    title: "Tanzania Data Bot",
-    description: "I built an AI-powered chatbot that provides interactive insights from the 2022 Tanzania Population & Housing Census, helping users explore national statistics through natural language.",
-    technologies: ["AI", "NLP", "Python", "Data Analysis"],
-    githubUrl: "https://github.com/CHRISBWESA/tanzania-data-bot",
-    featured: true,
-  },
-  {
-    title: "Chest X-Ray Lung Disease Classification",
-    description: "I developed a deep learning model to classify lung diseases from chest X-ray images, helping in early detection and diagnosis.",
-    technologies: ["Deep Learning", "Computer Vision", "Python", "Medical AI"],
-    githubUrl: "https://github.com/femyfede/Chest-X-Ray-Lung-Disease-Classification",
-  },
-  {
-    title: "Crop Health Hub",
-    description: "I created an AI-powered platform for monitoring and predicting crop health, helping farmers make data-driven decisions.",
-    technologies: ["Machine Learning", "Agriculture", "Python", "IoT"],
-    githubUrl: "https://github.com/femyfede/crop-health-hub",
-  },
-  {
-    title: "GAN Generator",
-    description: "I implemented Generative Adversarial Networks to create synthetic data and images for various AI applications.",
-    technologies: ["GANs", "Deep Learning", "Python", "TensorFlow"],
-    githubUrl: "https://github.com/femyfede/GAN-generator",
-  },
-  {
-    title: "Smart Door",
-    description: "I developed an IoT-based smart door system with facial recognition for enhanced security and access control.",
-    technologies: ["IoT", "Computer Vision", "Python", "Raspberry Pi"],
-    githubUrl: "https://github.com/femyfede/smartDoor",
-  },
-  {
-    title: "Caring Companion",
-    description: "I built an AI chatbot companion designed to provide emotional support and mental health assistance.",
-    technologies: ["NLP", "AI", "Python", "Chatbot"],
-    githubUrl: "https://github.com/femyfede/caring-companion",
-  },
-  {
-    title: "Diabetes Prediction",
-    description: "I created a machine learning model to predict diabetes risk based on health indicators and patient data.",
-    technologies: ["Machine Learning", "Healthcare", "Python", "Data Science"],
-    githubUrl: "https://github.com/femyfede/diabetes",
-  },
-  {
-    title: "Bot RAG",
-    description: "I developed a Retrieval-Augmented Generation bot that combines document retrieval with AI for intelligent responses.",
-    technologies: ["RAG", "LLM", "Python", "NLP"],
-    githubUrl: "https://github.com/femyfede/bot_rag",
-  },
+const icons = { seedyai: Sprout, grainsentinel: AudioLines, "customer-churn": ChartNoAxesCombined, "green-pulse": HeartPulse, "jenga-ai": Languages };
+const details: { key: keyof CaseStudy; title: string }[] = [
+  { key: "problem", title: "The problem" }, { key: "importance", title: "Why it matters" },
+  { key: "solution", title: "Proposed solution" }, { key: "role", title: "My contribution" },
+  { key: "process", title: "Development process" }, { key: "implementation", title: "Current implementation" },
+  { key: "impact", title: "Results & intended impact" },
 ];
 
-const Projects = () => {
-  return (
-    <section id="projects" className="py-24">
-      <div className="container mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
-            Featured <span className="gradient-text">Projects</span>
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Here are some of the AI and data science projects I've developed
-          </p>
-          <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full mt-4" />
-        </motion.div>
-
-        <div className="grid gap-8 max-w-5xl mx-auto">
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.15 }}
-            >
-              <div className={`card-elevated rounded-2xl p-8 border ${project.featured ? 'gradient-border border-transparent' : 'border-border'} hover:border-primary/30 transition-all duration-300`}>
-                {project.featured && (
-                  <div className="flex items-center gap-2 mb-4">
-                    <Sparkles className="w-4 h-4 text-primary" />
-                    <span className="text-xs font-medium text-primary uppercase tracking-wider">Featured Project</span>
-                  </div>
-                )}
-                
-                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-3">
-                      {project.featured && <Bot className="w-6 h-6 text-accent" />}
-                      <h3 className="font-display text-xl md:text-2xl font-bold text-foreground">
-                        {project.title}
-                      </h3>
-                    </div>
-                    
-                    <p className="text-muted-foreground mb-4 leading-relaxed">
-                      {project.description}
-                    </p>
-                    
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {project.technologies.map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-3 py-1 text-xs font-medium bg-secondary text-muted-foreground rounded-full border border-border"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                  
-                  <div className="flex gap-3 flex-shrink-0">
-                    {project.githubUrl && (
-                      <Button variant="outline" size="default" asChild>
-                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                          <Github className="w-4 h-4" />
-                          GitHub
-                        </a>
-                      </Button>
-                    )}
-                    {project.liveUrl && (
-                      <Button variant="default" size="default" asChild>
-                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                          <ExternalLink className="w-4 h-4" />
-                          Live Demo
-                        </a>
-                      </Button>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+export default function Projects() {
+  const [selected, setSelected] = useState<CaseStudy | null>(null);
+  return <section id="projects" className="section-space">
+    <div className="page-container">
+      <SectionHeading number="03" eyebrow="PROJECTS & INNOVATION" title="Ideas becoming practical solutions." description="A closer look at what I am building, the problems behind the work, and where each project stands." />
+      <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {featuredProjects.map((project, index) => {
+          const Icon = icons[project.id as keyof typeof icons] || Sprout;
+          return <article className="project-card group" key={project.id}>
+            <div className="flex h-32 items-center justify-between border-b border-border bg-secondary/40 px-6"><Icon className="h-12 w-12 text-accent" strokeWidth={1} /><span className="self-start pt-5 font-mono text-xs text-muted-foreground">0{index + 1}</span></div>
+            <div className="flex flex-1 flex-col p-6">
+              <p className="mb-3 text-[10px] font-medium text-accent">{project.category}</p>
+              <h3 className="font-display text-xl font-medium">{project.title}</h3>
+              <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">{project.summary}</p>
+              <div className="mt-5 flex flex-wrap gap-2">{project.technologies.map(tech => <span key={tech} className="text-[11px] text-muted-foreground">{tech}</span>)}</div>
+              <div className="mt-5 border-t border-border pt-4"><p className="mb-3 flex items-center gap-2 text-xs text-accent"><span className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />{project.status}</p><Button variant="ghost" className="w-full justify-between px-0 hover:bg-transparent hover:text-accent" onClick={() => setSelected(project)} aria-label={`Read ${project.title} case study`}>Read case study<ArrowUpRight /></Button></div>
+            </div>
+          </article>;
+        })}
+        <div className="flex flex-col justify-center border-l border-border p-6 md:p-8"><p className="mb-3 text-xs text-accent">MORE FROM MY WORKBENCH</p><h3 className="font-display text-2xl font-medium">The code behind<br />the ideas.</h3><p className="mt-4 text-sm leading-relaxed text-muted-foreground">Explore my public repositories in AI, analytics, web development, and automation.</p><Button variant="link" asChild className="mt-5 justify-start px-0"><a href="#github">Browse GitHub projects<ArrowUpRight /></a></Button></div>
       </div>
-    </section>
-  );
-};
-
-export default Projects;
+    </div>
+    <Dialog open={selected !== null} onOpenChange={open => { if (!open) setSelected(null); }}>
+      <DialogContent className="max-h-[85svh] w-[calc(100%-2rem)] max-w-3xl overflow-y-auto rounded-lg p-6 md:p-9">
+        {selected && <>
+          <DialogHeader className="pr-6 text-left"><p className="mb-2 text-xs text-accent">{selected.category}</p><DialogTitle className="font-display text-2xl font-medium leading-tight md:text-3xl">{selected.title}</DialogTitle><DialogDescription className="pt-2 leading-relaxed">{selected.summary}</DialogDescription></DialogHeader>
+          <p className="border-y border-border py-3 text-sm font-medium text-accent">{selected.status}</p>
+          {selected.metric && <div className="py-2"><p className="font-display text-3xl text-foreground">{selected.metric.value}</p><p className="mt-1 text-xs text-muted-foreground">{selected.metric.label}</p></div>}
+          <div className="space-y-6">{details.map(detail => <div key={detail.key}><h4 className="mb-2 text-sm font-semibold">{detail.title}</h4><p className="text-sm leading-relaxed text-muted-foreground">{String(selected[detail.key] || "")}</p></div>)}</div>
+          <div className="border-t border-border pt-4"><h4 className="mb-2 text-sm font-semibold">Technologies & tools</h4><p className="text-sm text-muted-foreground">{selected.technologies.join(" · ")}</p></div>
+          {selected.githubUrl && <Button asChild variant="outline"><a href={selected.githubUrl} target="_blank" rel="noopener noreferrer"><Github />View repository<ArrowUpRight /></a></Button>}
+        </>}
+      </DialogContent>
+    </Dialog>
+  </section>;
+}

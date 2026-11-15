@@ -1,135 +1,56 @@
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { Menu, X, Sun, Moon, ArrowUpRight } from "lucide-react";
 import { useTheme } from "@/hooks/use-theme";
 import profileImage from "@/assets/fede.jpg";
 
 const navLinks = [
+  { href: "#home", label: "Home" },
   { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills" },
+  { href: "#experience", label: "Experience" },
   { href: "#projects", label: "Projects" },
-  { href: "#community", label: "Impact" },
-  { href: "#awards", label: "Awards" },
-  { href: "#contact", label: "Contact" },
+  { href: "#github", label: "GitHub" },
+  { href: "#awards", label: "Recognition" },
+  { href: "#community", label: "Leadership" },
+  { href: "#skills", label: "Skills" },
+  { href: "#education", label: "Education" },
 ];
 
-const Navigation = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+export default function Navigation() {
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("home");
   const { theme, toggleTheme } = useTheme();
-
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => { if (entry.isIntersecting) setActive(entry.target.id); });
+    }, { rootMargin: "-15% 0px -65% 0px", threshold: 0 });
+    document.querySelectorAll("main section[id]").forEach(section => observer.observe(section));
+    return () => observer.disconnect();
   }, []);
-
-  return (
-    <>
-      <motion.header
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.5 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
-            ? "bg-background/80 backdrop-blur-lg border-b border-border"
-            : "bg-transparent"
-        }`}
-      >
-        <nav className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <a href="#" className="flex items-center gap-3">
-              <img 
-                src={profileImage} 
-                alt="Fedelika Maxmus" 
-                className="w-10 h-10 rounded-full object-cover border-2 border-primary/50"
-              />
-              <span className="font-display font-bold text-lg text-foreground">
-                Fedelika
-              </span>
-            </a>
-
-            {/* Desktop navigation */}
-            <div className="hidden md:flex items-center gap-8">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
-                >
-                  {link.label}
-                </a>
-              ))}
-              <button
-                onClick={toggleTheme}
-                className="w-10 h-10 rounded-lg bg-secondary border border-border flex items-center justify-center text-foreground hover:border-primary/50 transition-all duration-300"
-                aria-label="Toggle theme"
-              >
-                {theme === "light" ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
-              </button>
-              <Button variant="hero" size="sm" asChild>
-                <a href="#contact">Hire Me</a>
-              </Button>
-            </div>
-
-            {/* Mobile menu button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden w-10 h-10 rounded-lg bg-secondary border border-border flex items-center justify-center text-foreground"
-              aria-label="Toggle menu"
-            >
-              {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
-          </div>
-        </nav>
-      </motion.header>
-
-      {/* Mobile menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-x-0 top-16 z-40 md:hidden"
-          >
-            <div className="bg-background/95 backdrop-blur-lg border-b border-border p-6">
-              <div className="flex flex-col gap-4">
-                {navLinks.map((link) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="text-foreground hover:text-primary transition-colors duration-200 py-2"
-                  >
-                    {link.label}
-                  </a>
-                ))}
-                <div className="flex items-center gap-4 mt-2">
-                  <button
-                    onClick={toggleTheme}
-                    className="w-12 h-12 rounded-lg bg-secondary border border-border flex items-center justify-center text-foreground"
-                    aria-label="Toggle theme"
-                  >
-                    {theme === "light" ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
-                  </button>
-                  <Button variant="hero" size="lg" className="flex-1" asChild>
-                    <a href="#contact" onClick={() => setIsMobileMenuOpen(false)}>
-                      Hire Me
-                    </a>
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
-  );
-};
-
-export default Navigation;
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (event: KeyboardEvent) => { if (event.key === "Escape") setOpen(false); };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+  return <header className="fixed inset-x-0 top-0 z-40 border-b border-border bg-background/95 backdrop-blur-md">
+    <nav aria-label="Main navigation" className="page-container flex h-20 items-center justify-between gap-4">
+      <a href="#home" onClick={() => setOpen(false)} className="flex shrink-0 items-center gap-2.5" aria-label="Fedelika Maxmus Ng’olo — home">
+        <img src={profileImage} alt="" className="h-10 w-10 rounded-full border border-border object-cover object-[center_35%]" />
+        <span className="font-display text-lg font-semibold">Fedelika<span className="text-accent">.</span></span>
+      </a>
+      <div className="hidden items-center gap-5 xl:flex">
+        {navLinks.slice(1).filter(link => !["#community", "#education"].includes(link.href)).map(link => <a key={link.href} href={link.href} aria-current={active === link.href.slice(1) ? "location" : undefined} className={`text-xs transition-colors hover:text-foreground ${active === link.href.slice(1) ? "text-foreground" : "text-muted-foreground"}`}>{link.label}</a>)}
+      </div>
+      <div className="flex shrink-0 items-center gap-2">
+        <Tooltip><TooltipTrigger asChild><Button variant="ghost" size="icon" onClick={toggleTheme} aria-label={theme === "light" ? "Switch to dark theme" : "Switch to light theme"}>{theme === "light" ? <Moon /> : <Sun />}</Button></TooltipTrigger><TooltipContent>{theme === "light" ? "Dark theme" : "Light theme"}</TooltipContent></Tooltip>
+        <Button size="sm" asChild className="hidden sm:inline-flex"><a href="#contact">Let’s talk<ArrowUpRight /></a></Button>
+        <Button variant="ghost" size="icon" className="xl:hidden" onClick={() => setOpen(value => !value)} aria-label={open ? "Close navigation" : "Open navigation"} aria-expanded={open} aria-controls="mobile-navigation">{open ? <X /> : <Menu />}</Button>
+      </div>
+    </nav>
+    {open && <nav id="mobile-navigation" aria-label="Expanded navigation" className="max-h-[calc(100svh-80px)] overflow-y-auto border-t border-border bg-background xl:hidden">
+      <div className="page-container grid grid-cols-2 gap-x-6 gap-y-1 py-5">{[...navLinks, { href: "#contact", label: "Contact" }].map(link => <a href={link.href} key={link.href} onClick={() => setOpen(false)} className="border-b border-border py-3 text-sm text-foreground hover:text-accent">{link.label}</a>)}</div>
+    </nav>}
+  </header>;
+}
