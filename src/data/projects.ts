@@ -34,6 +34,7 @@ export const featuredProjects: CaseStudy[] = [
     implementation: "The machine learning model has been trained. Hardware deployment is still in progress; offline classification and the display remain intended capabilities. No field validation or commercial deployment is claimed.",
     impact: "Expected impact: more accessible seed identification for Tanzanian smallholders. Real-world accuracy and farmer outcomes have not yet been established.",
     metric: { value: "23,727", label: "images in the training dataset, approximately" },
+    githubUrl: "https://github.com/femyfede/seed_classifer",
   },
   {
     id: "grainsentinel", title: "GrainSentinel", category: "AGRICULTURE · IOT",
@@ -61,6 +62,7 @@ export const featuredProjects: CaseStudy[] = [
     implementation: "The dataset contains 1,869 churned customers and 5,174 retained customers, giving an observed churn rate of approximately 26.54%. This is an analytical finding, not a claim of improved retention.",
     impact: "The analysis gives a clearer picture of customer behaviour and a basis for informed retention discussions. No revenue improvement or causal impact is claimed.",
     metric: { value: "26.54%", label: "observed customer churn rate" },
+    githubUrl: "https://github.com/femyfede/saikit_system",
   },
   {
     id: "green-pulse", title: "Green Pulse / Pulse NCD", category: "HEALTH · INNOVATION",
