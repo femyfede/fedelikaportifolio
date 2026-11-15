@@ -1,64 +1,26 @@
-import { motion } from "framer-motion";
-import { Award, Calendar, Trophy } from "lucide-react";
+import { Award, Globe, Users, Sparkles, ArrowUpRight } from "lucide-react";
+import SectionHeading from "./SectionHeading";
 
-const Awards = () => {
-  return (
-    <section id="awards" className="py-24">
-      <div className="container mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
-            Awards & <span className="gradient-text">Recognition</span>
-          </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full" />
-        </motion.div>
+const achievements = [
+  { year: "2026", icon: Globe, title: "IEEE IES Industrial Innovation Summit", detail: "Nairobi delegate · East Africa Hubs & Nodes" },
+  { year: "2026", icon: Users, title: "DTI-A Mentorship Programme", detail: "Selected mentor" },
+  { year: "2026", icon: Sparkles, title: "Girls in ICT", detail: "Technology & community participation" },
+  { year: "Recognition", icon: Award, title: "IEEE Ambassador Recognition", detail: "IEEE IES Summit Ambassador · Top IEEE Ambassador · Best IEEE Ambassador" },
+  { year: "Recognition", icon: Award, title: "Best Female Innovation", detail: "Innovation recognition" },
+  { year: "Selection stage", icon: ArrowUpRight, title: "MEST AI Startup Program", detail: "Final interview stage" },
+  { year: "2025", icon: Award, title: "Digital Innovation Award", detail: "Nominee · Founders Exhibition & Awards (FEA)" },
+];
 
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="max-w-3xl mx-auto"
-        >
-          <div className="gradient-border rounded-2xl p-8 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-2xl" />
-            <div className="absolute bottom-0 left-0 w-24 h-24 bg-accent/10 rounded-full blur-2xl" />
-            
-            <div className="relative flex flex-col md:flex-row gap-6 items-start">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center flex-shrink-0 glow-effect">
-                <Trophy className="w-8 h-8 text-primary-foreground" />
-              </div>
-              
-              <div className="flex-1">
-                <div className="flex items-center gap-2 mb-2">
-                  <Award className="w-4 h-4 text-primary" />
-                  <span className="text-xs font-medium text-primary uppercase tracking-wider">Nominee</span>
-                </div>
-                
-                <h3 className="font-display text-xl md:text-2xl font-bold text-foreground mb-3">
-                  Digital Innovation Award
-                </h3>
-                
-                <p className="text-muted-foreground mb-4 leading-relaxed">
-                  Recognized for outstanding contributions to digital innovation and AI-driven solutions at the prestigious Founders Exhibition & Awards (FEA) 2025.
-                </p>
-                
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <Calendar className="w-4 h-4" />
-                  <span>Founders Exhibition & Awards (FEA) 2025</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  );
-};
-
-export default Awards;
+export default function Awards() {
+  return <section id="awards" className="section-space">
+    <div className="page-container grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+      <SectionHeading number="05" eyebrow="ACHIEVEMENTS & RECOGNITION" title="Progress worth recognising." description="Milestones in innovation, professional communities, and mentorship." />
+      <div className="relative border-l border-border pl-6 md:pl-8">{achievements.map(item => <article className="relative border-b border-border py-5 first:pt-0 last:border-0" key={item.title}>
+        <span className="absolute -left-[29px] top-7 h-2 w-2 rounded-full bg-accent first:top-2 md:-left-[37px]" />
+        <p className="mb-2 font-mono text-[11px] text-accent">{item.year}</p>
+        <h3 className="flex items-start gap-3 font-display text-lg font-medium"><item.icon className="mt-1 h-4 w-4 shrink-0 text-muted-foreground" />{item.title}</h3>
+        <p className="mt-2 pl-7 text-sm leading-relaxed text-muted-foreground">{item.detail}</p>
+      </article>)}</div>
+    </div>
+  </section>;
+}

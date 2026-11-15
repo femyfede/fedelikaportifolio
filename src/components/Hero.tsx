@@ -1,123 +1,28 @@
-import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Github, MapPin } from "lucide-react";
 import profileImage from "@/assets/fede.jpg";
+import { profile } from "@/data/profile";
 
-const Hero = () => {
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  return (
-    <section className="relative min-h-screen flex items-center justify-center hero-bg overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-glow-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/5 rounded-full blur-3xl animate-glow-pulse" style={{ animationDelay: '1.5s' }} />
-      </div>
-
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Text content */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-center lg:text-left"
-          >
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary border border-border mb-6"
-            >
-              <Sparkles className="w-4 h-4 text-primary" />
-              <span className="text-sm text-muted-foreground">AI/ML Engineer & Data Scientist</span>
-            </motion.div>
-
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.6 }}
-              className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
-            >
-              <span className="gradient-text">AI & Data Science</span>
-              <br />
-              <span className="text-foreground">for Social Impact</span>
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-              className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl mx-auto lg:mx-0"
-            >
-              Hi, I'm <span className="text-foreground font-semibold">Maxmus Fedelika</span>, an AI/ML Engineer, Data Scientist, IoT Developer & Web Developer. I build intelligent, data-driven solutions that empower communities and solve real-world challenges.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.6 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
-            >
-              <Button 
-                variant="hero" 
-                size="lg" 
-                onClick={() => scrollToSection('projects')}
-              >
-                View My Projects
-                <ArrowRight className="w-5 h-5" />
-              </Button>
-              <Button 
-                variant="heroOutline" 
-                size="lg" 
-                onClick={() => scrollToSection('contact')}
-              >
-                Contact Me
-              </Button>
-            </motion.div>
-          </motion.div>
-
-          {/* Profile image */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
-            className="relative flex justify-center lg:block"
-          >
-            <div className="relative floating-animation">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent/10 rounded-3xl blur-2xl" />
-              <img
-                src={profileImage}
-                alt="Maxmus Fedelika - AI/ML Engineer"
-                className="relative w-64 h-80 md:w-80 md:h-96 lg:w-full lg:max-w-md mx-auto rounded-3xl shadow-2xl object-cover"
-              />
-            </div>
-          </motion.div>
+export default function Hero() {
+  return <section id="home" className="hero-surface relative isolate flex items-center overflow-hidden pt-20">
+    <img src={profileImage} alt="Fedelika Maxmus Ng’olo" className="hero-photo" fetchPriority="high" />
+    <div className="hero-wash" />
+    <div className="page-container relative z-10 py-12 pt-[360px] md:py-16">
+      <div className="reveal max-w-lg lg:max-w-xl">
+        <p className="mb-6 flex items-center gap-2 text-xs font-medium text-accent"><span className="h-1.5 w-1.5 rounded-full bg-accent" />FOUNDER, BLECA SMARTLABS</p>
+        <h1 className="font-display text-4xl font-medium leading-[1.08] sm:text-5xl lg:text-6xl">Fedelika Maxmus<br /><span className="text-accent">Ng’olo.</span></h1>
+        <p className="mt-6 max-w-md font-display text-lg font-medium leading-relaxed md:text-xl">AI & Machine Learning. Data Analytics.<br className="hidden sm:block" /> Embedded AI. Technology Innovation.</p>
+        <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground lg:max-w-md lg:text-base">I am a Data Science graduate building practical AI-powered solutions and leading innovation for real-world challenges in Tanzania.</p>
+        <div className="mt-7 flex flex-wrap gap-3">
+          <Button size="lg" asChild className="px-6"><a href="#projects">Explore my work<ArrowUpRight /></a></Button>
+          <Button size="lg" variant="outline" asChild className="px-6"><a href="#contact">Let’s collaborate<ArrowUpRight /></a></Button>
+        </div>
+        <div className="mt-8 flex flex-wrap items-center gap-6 text-xs text-muted-foreground">
+          <span className="flex items-center gap-1.5"><MapPin className="h-3.5 w-3.5" />Tanzania</span>
+          <a href={profile.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-foreground"><Github className="h-3.5 w-3.5" />@femyfede<ArrowUpRight className="h-3 w-3" /></a>
         </div>
       </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 0.6 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <div className="w-6 h-10 rounded-full border-2 border-muted-foreground/30 flex items-start justify-center p-2">
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-            className="w-1 h-2 bg-primary rounded-full"
-          />
-        </div>
-      </motion.div>
-    </section>
-  );
-};
-
-export default Hero;
+      <a href="#about" className="mt-10 inline-flex items-center gap-3 text-xs text-muted-foreground md:mt-12"><ArrowDown className="h-4 w-4" />THE STORY BEHIND THE WORK</a>
+    </div>
+  </section>;
+}
