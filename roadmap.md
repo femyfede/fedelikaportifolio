@@ -2,8 +2,8 @@
 
 ## Current request: work photo gallery
 
-- [ ] Add the three supplied photos in a sliding gallery without replacing the profile portrait.
-- [ ] Verify automatic sliding, gallery controls, and phone/tablet/desktop layouts.
+- [x] Add the three supplied photos in a sliding gallery without replacing the profile portrait.
+- [x] Verify automatic sliding, gallery controls, and phone/tablet/desktop layouts.
 
 ## Earlier upgrade tasks
 
