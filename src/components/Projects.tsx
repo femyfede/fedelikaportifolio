@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { ArrowUpRight, Github, Sprout, AudioLines, ChartNoAxesCombined, HeartPulse, Languages } from "lucide-react";
+import { ArrowUpRight, Github, Sprout, ChartNoAxesCombined, HeartPulse, Languages } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import SectionHeading from "./SectionHeading";
 import { featuredProjects, type CaseStudy } from "@/data/projects";
 
-const icons = { seedyai: Sprout, grainsentinel: AudioLines, "customer-churn": ChartNoAxesCombined, "green-pulse": HeartPulse, "jenga-ai": Languages };
+const icons = { seedyai: Sprout, "customer-churn": ChartNoAxesCombined, "green-pulse": HeartPulse, "jenga-ai": Languages };
 const details: { key: keyof CaseStudy; title: string }[] = [
   { key: "problem", title: "The problem" }, { key: "importance", title: "Why it matters" },
   { key: "solution", title: "Proposed solution" }, { key: "role", title: "My contribution" },
@@ -36,7 +36,7 @@ export default function Projects() {
       </div>
     </div>
     <Dialog open={selected !== null} onOpenChange={open => { if (!open) setSelected(null); }}>
-      <DialogContent className="max-h-[85svh] w-[calc(100%-2rem)] max-w-3xl overflow-y-auto rounded-lg p-6 md:p-9">
+      <DialogContent className="max-h-[85svh] w-[calc(100%-2rem)] max-w-xl overflow-y-auto rounded-lg p-6 md:p-8">
         {selected && <>
           <DialogHeader className="pr-6 text-left"><p className="mb-2 text-xs text-accent">{selected.category}</p><DialogTitle className="font-display text-2xl font-medium leading-tight md:text-3xl">{selected.title}</DialogTitle><DialogDescription className="pt-2 leading-relaxed">{selected.summary}</DialogDescription></DialogHeader>
           <p className="border-y border-border py-3 text-sm font-medium text-accent">{selected.status}</p>
