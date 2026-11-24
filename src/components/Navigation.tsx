@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import { Menu, X, Sun, Moon, ArrowUpRight } from "lucide-react";
+import { Menu, X, Sun, Moon, ArrowUpRight, Coffee } from "lucide-react";
 import { useTheme } from "@/hooks/use-theme";
+import { profile } from "@/data/profile";
 import profileImage from "@/assets/fede.jpg";
 
 const navLinks = [
@@ -45,12 +46,14 @@ export default function Navigation() {
       </div>
       <div className="flex shrink-0 items-center gap-2">
         <Tooltip><TooltipTrigger asChild><Button variant="ghost" size="icon" onClick={toggleTheme} aria-label={theme === "light" ? "Switch to dark theme" : "Switch to light theme"}>{theme === "light" ? <Moon /> : <Sun />}</Button></TooltipTrigger><TooltipContent>{theme === "light" ? "Dark theme" : "Light theme"}</TooltipContent></Tooltip>
+        <Button size="sm" asChild variant="coffee" className="hidden sm:inline-flex"><a href={profile.buyMeACoffee} target="_blank" rel="noopener noreferrer"><Coffee />Buy me a coffee</a></Button>
         <Button size="sm" asChild className="hidden sm:inline-flex"><a href="#contact">Let’s talk<ArrowUpRight /></a></Button>
         <Button variant="ghost" size="icon" className="xl:hidden" onClick={() => setOpen(value => !value)} aria-label={open ? "Close navigation" : "Open navigation"} aria-expanded={open} aria-controls="mobile-navigation">{open ? <X /> : <Menu />}</Button>
       </div>
     </nav>
     {open && <nav id="mobile-navigation" aria-label="Expanded navigation" className="max-h-[calc(100svh-80px)] overflow-y-auto border-t border-border bg-background xl:hidden">
       <div className="page-container grid grid-cols-2 gap-x-6 gap-y-1 py-5">{[...navLinks, { href: "#contact", label: "Contact" }].map(link => <a href={link.href} key={link.href} onClick={() => setOpen(false)} className="border-b border-border py-3 text-sm text-foreground hover:text-accent">{link.label}</a>)}</div>
+      <div className="page-container pb-5"><Button asChild variant="coffee" className="w-full"><a href={profile.buyMeACoffee} target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)}><Coffee />Buy me a coffee<ArrowUpRight /></a></Button></div>
     </nav>}
   </header>;
 }
