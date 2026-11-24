@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from "react";
-import { ArrowUpRight, Mail, Github, Linkedin, MessageCircle, Copy, Check } from "lucide-react";
+import { ArrowUpRight, Mail, Github, Linkedin, MessageCircle, Copy, Check, Coffee } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -29,7 +29,7 @@ export default function Contact() {
         <p className="max-w-md text-sm leading-relaxed text-muted-foreground">I am open to AI and analytics projects, research, embedded-system innovation, professional opportunities, and technology mentorship.</p>
         <div className="mt-8 flex items-center gap-2"><a href={`mailto:${profile.email}`} className="break-all font-display text-lg hover:text-accent">{profile.email}</a><Button variant="ghost" size="icon" onClick={copyEmail} aria-label={copied ? "Email copied" : "Copy email address"} title={copied ? "Email copied" : "Copy email address"}>{copied ? <Check /> : <Copy />}</Button></div>
         {copyError && <p className="mt-2 text-xs text-muted-foreground" role="status">Copy is unavailable. Email me at {profile.email}.</p>}
-        <div className="mt-6 flex flex-wrap gap-3"><Button asChild variant="outline"><a href={profile.linkedin} target="_blank" rel="noopener noreferrer"><Linkedin />LinkedIn<ArrowUpRight /></a></Button><Button asChild variant="outline"><a href={profile.github} target="_blank" rel="noopener noreferrer"><Github />GitHub<ArrowUpRight /></a></Button></div>
+        <div className="mt-6 flex flex-wrap gap-3"><Button asChild variant="coffee"><a href={profile.buyMeACoffee} target="_blank" rel="noopener noreferrer"><Coffee />Buy me a coffee<ArrowUpRight /></a></Button><Button asChild variant="outline"><a href={profile.linkedin} target="_blank" rel="noopener noreferrer"><Linkedin />LinkedIn<ArrowUpRight /></a></Button><Button asChild variant="outline"><a href={profile.github} target="_blank" rel="noopener noreferrer"><Github />GitHub<ArrowUpRight /></a></Button></div>
         <Button asChild variant="link" className="mt-4 px-0 text-whatsapp"><a href={profile.whatsapp} target="_blank" rel="noopener noreferrer"><MessageCircle />WhatsApp · {profile.phone}<ArrowUpRight /></a></Button>
       </div>
       <form onSubmit={submit} className="space-y-5">

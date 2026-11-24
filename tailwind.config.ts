@@ -20,6 +20,10 @@ export default {
       colors: {
         overlay: "hsl(var(--overlay))",
         whatsapp: "hsl(var(--whatsapp))",
+        coffee: {
+          DEFAULT: "hsl(var(--coffee))",
+          foreground: "hsl(var(--coffee-foreground))",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

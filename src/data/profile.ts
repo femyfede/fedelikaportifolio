@@ -7,6 +7,7 @@ export const profile = {
   labs: "https://blecasmartlabs.co.tz",
   whatsapp: "https://wa.me/255684049130",
   phone: "+255684049130",
+  buyMeACoffee: "https://www.buymeacoffee.com/femyfede",
   education: {
     degree: "BEng in Data Science",
     university: "Mbeya University of Science and Technology",
