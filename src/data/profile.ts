@@ -7,7 +7,7 @@ export const profile = {
   labs: "https://blecasmartlabs.co.tz",
   whatsapp: "https://wa.me/255684049130",
   phone: "+255684049130",
-  buyMeACoffee: "https://www.buymeacoffee.com/femyfede",
+  airtelMoney: { name: "Fedelika Maxmus", number: "+255 684 049 130", copyValue: "+255684049130" },
   education: {
     degree: "BEng in Data Science",
     university: "Mbeya University of Science and Technology",
